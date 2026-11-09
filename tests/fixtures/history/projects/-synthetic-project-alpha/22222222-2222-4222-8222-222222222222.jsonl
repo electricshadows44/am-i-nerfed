@@ -1,0 +1,5 @@
+{"type":"user","timestamp":"2026-10-21T23:59:00.000Z","sessionId":"22222222-2222-4222-8222-222222222222","uuid":"bbbb0001","message":{"role":"user","content":"synthetic prompt before midnight"}}
+{"type":"atis-latch","atis":"dba7c1f0e2d94b3a8c6e5f4d3c2b1a09-tokentail-01","sessionId":"22222222-2222-4222-8222-222222222222"}
+{"type":"assistant","timestamp":"2026-10-22T00:01:00.000Z","sessionId":"22222222-2222-4222-8222-222222222222","uuid":"bbbb0002","message":{"role":"assistant","content":[{"type":"text","text":"synthetic reply after midnight"}]}}
+{"type":"atis-latch","atis":"dba7c1f0e2d94b3a8c6e5f4d3c2b1a09-tokentail-01","sessionId":"22222222-2222-4222-8222-222222222222"}
+{this line is deliberately not valid json

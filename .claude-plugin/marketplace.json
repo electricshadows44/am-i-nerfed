@@ -1,0 +1,17 @@
+{
+  "name": "am-i-nerfed",
+  "owner": {
+    "name": "electricshadows44"
+  },
+  "metadata": {
+    "description": "Detect, explain and opt out of Claude Code server-side experiment assignments (x-cc-atis). Unofficial."
+  },
+  "plugins": [
+    {
+      "name": "am-i-nerfed",
+      "source": "./",
+      "description": "Detects Claude Code server-side experiment assignments (the x-cc-atis header) and lets you opt out. Unofficial; reads local files only.",
+      "version": "0.1.2"
+    }
+  ]
+}

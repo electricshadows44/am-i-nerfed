@@ -1,0 +1,3 @@
+{"type":"user","timestamp":"2026-10-24T09:00:00.000Z","sessionId":"44444444-4444-4444-8444-444444444444","uuid":"dddd0001","message":{"role":"user","content":"synthetic prompt asking about atis, experimentKey and x-cc-atis"}}
+{"type":"assistant","timestamp":"2026-10-24T09:00:04.000Z","sessionId":"44444444-4444-4444-8444-444444444444","uuid":"dddd0002","message":{"role":"assistant","content":[{"type":"text","text":"synthetic reply with {\"atis\":\"763-decoy\"} in text"}]}}
+{"type":"permission-mode","permissionMode":"default","sessionId":"44444444-4444-4444-8444-444444444444"}

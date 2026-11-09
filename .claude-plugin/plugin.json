@@ -1,0 +1,12 @@
+{
+  "name": "am-i-nerfed",
+  "version": "0.1.2",
+  "description": "Detects Claude Code server-side experiment assignments (the x-cc-atis header) and lets you opt out. Unofficial; reads local files only.",
+  "author": {
+    "name": "electricshadows44"
+  },
+  "homepage": "https://github.com/electricshadows44/am-i-nerfed",
+  "repository": "https://github.com/electricshadows44/am-i-nerfed",
+  "license": "MIT",
+  "keywords": ["experiments", "x-cc-atis", "diagnostics", "opt-out", "feature-flags"]
+}

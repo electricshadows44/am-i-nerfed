@@ -1,0 +1,52 @@
+{
+  "numStartups": 7,
+  "installMethod": "synthetic-fixture",
+  "userID": "sentinel-user-id-0004",
+  "primaryApiKey": "sentinel-api-key-0005",
+  "oauthAccount": {
+    "accountUuid": "sentinel-account-uuid-0001",
+    "emailAddress": "sentinel.oauth.email@example.invalid",
+    "organizationUuid": "sentinel-org-uuid-0002",
+    "organizationName": "Sentinel Org Name 0003",
+    "displayName": "Sentinel Display 0007"
+  },
+  "clientDataCacheSlots": {
+    "k2b-000000000000e001": {
+      "model": "claude-opus-5-5",
+      "entrypoint": "cli",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1793534400000,
+      "data": {
+        "fixture_model_toggles": { "claude-alpha": true, "claude-beta": false },
+        "fixture_date_flag": "2026-10-01",
+        "atis": "dba7c1f0e2d94b3a8c6e5f4d3c2b1a09-tokentail-01",
+        "experimentKey": "exp_fixture_dba"
+      }
+    },
+    "k2b-000000000000e002": {
+      "model": "claude-fable-5-1",
+      "entrypoint": "claude-desktop",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1793354400000,
+      "data": {
+        "fixture_model_toggles": { "claude-alpha": true, "claude-beta": true },
+        "atis": "34e0a9b8c7d6e5f4a3b2c1d0e9f8a7b6-tokentail-02",
+        "experimentKey": "exp_fixture_34e"
+      }
+    },
+    "k2b-000000000000e003": {
+      "model": "claude-opus-4-8",
+      "entrypoint": "cli",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1789458300000,
+      "data": {
+        "fixture_model_toggles": { "claude-alpha": false, "claude-beta": false },
+        "fixture_date_flag": "2026-08-01"
+      }
+    }
+  },
+  "bigNumberProbe": 1234567,
+  "projects": {
+    "/synthetic/project/two": { "allowedTools": ["Bash(ls:*)"], "hasTrustDialogAccepted": true }
+  }
+}

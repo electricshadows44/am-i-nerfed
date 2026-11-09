@@ -1,0 +1,74 @@
+{
+  "numStartups": 99,
+  "installMethod": "synthetic-fixture",
+  "userID": "sentinel-user-id-0004",
+  "oauthAccount": {
+    "accountUuid": "sentinel-account-uuid-0001",
+    "emailAddress": "sentinel.oauth.email@example.invalid",
+    "organizationUuid": "sentinel-org-uuid-0002",
+    "organizationName": "Sentinel Org Name 0003",
+    "displayName": "Sentinel Display 0007"
+  },
+  "clientDataCacheSlots": {
+    "k3c-000000000000m001": {
+      "model": "claude-opus-5-5",
+      "entrypoint": "cli",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1793719200000,
+      "data": {
+        "fixture_word_flag": "xyz",
+        "atis": "7631f2e3d4c5b6a7980f1e2d3c4b5a69-tokentail-03",
+        "experimentKey": "exp_fixture_763"
+      }
+    },
+    "k3c-000000000000m002": {
+      "model": "claude-opus-5-5",
+      "entrypoint": "claude-desktop",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1793534400000,
+      "data": { "fixture_word_flag": "xyz" }
+    },
+    "k3c-000000000000m003": {
+      "model": "claude-fable-5-1",
+      "entrypoint": "claude-desktop",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1792483200000,
+      "data": {
+        "fixture_date_flag": "2026-09-01",
+        "atis": "eab9e8d7c6b5a4f3e2d1c0b9a8f7e6d5-tokentail-04",
+        "experimentKey": "exp_fixture_eab"
+      }
+    },
+    "k3c-000000000000m004": {
+      "model": "claude-fable-5-1",
+      "entrypoint": "claude-desktop",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1793354400000,
+      "data": { "fixture_date_flag": "2026-10-01" }
+    },
+    "k3c-000000000000m005": {
+      "model": "claude-opus-4-8",
+      "entrypoint": "sdk-cli",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1792920600000,
+      "data": { "fixture_date_flag": "2026-10-01" }
+    },
+    "k3c-000000000000m006": {
+      "model": "claude-opus-4-8",
+      "entrypoint": "sdk-cli",
+      "org": "sentinel-other-org-uuid-0006",
+      "at": 1793719200000,
+      "data": {
+        "atis": "c0e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1-tokentail-05",
+        "experimentKey": "exp_fixture_c0e"
+      }
+    },
+    "k3c-000000000000m007": {
+      "model": "claude-haiku-5-5",
+      "entrypoint": "cli",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1789458300000,
+      "data": null
+    }
+  }
+}

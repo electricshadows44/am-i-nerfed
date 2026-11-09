@@ -1,0 +1,50 @@
+{
+  "numStartups": 12,
+  "installMethod": "synthetic-fixture",
+  "userID": "sentinel-user-id-0004",
+  "oauthAccount": {
+    "accountUuid": "sentinel-account-uuid-0001",
+    "emailAddress": "sentinel.oauth.email@example.invalid",
+    "organizationUuid": "sentinel-org-uuid-0002",
+    "organizationName": "Sentinel Org Name 0003",
+    "displayName": "Sentinel Display 0007"
+  },
+  "cachedExperimentData": {
+    "fixture_named_exp_alpha": {
+      "experimentId": "fixture-exp-id-alpha",
+      "variationId": 0,
+      "value": { "label": "fixture-exp-value-marker-a", "enabled": true }
+    },
+    "fixture_named_exp_beta": {
+      "experimentId": "fixture-exp-id-beta",
+      "variationId": 1,
+      "value": "fixture-exp-value-marker-b"
+    },
+    "fixture_named_exp_gamma": {
+      "experimentId": "fixture_named_exp_gamma",
+      "variationId": 2,
+      "value": false
+    }
+  },
+  "cachedExperimentFeatures": [
+    "fixture_named_exp_alpha",
+    "fixture_named_exp_beta",
+    "fixture_named_exp_gamma"
+  ],
+  "clientDataCacheSlots": {
+    "k4d-000000000000x001": {
+      "model": "claude-opus-5-5",
+      "entrypoint": "cli",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1793534400000,
+      "data": { "fixture_date_flag": "2026-10-01" }
+    },
+    "k4d-000000000000x002": {
+      "model": "claude-fable-5-1",
+      "entrypoint": "claude-desktop",
+      "org": "sentinel-org-uuid-0002",
+      "at": 1793354400000,
+      "data": { "fixture_word_flag": "abc" }
+    }
+  }
+}

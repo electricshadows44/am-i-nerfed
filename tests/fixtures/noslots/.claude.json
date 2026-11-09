@@ -1,0 +1,13 @@
+{
+  "numStartups": 1,
+  "installMethod": "synthetic-fixture",
+  "userID": "sentinel-user-id-0004",
+  "oauthAccount": {
+    "accountUuid": "sentinel-account-uuid-0001",
+    "emailAddress": "sentinel.oauth.email@example.invalid",
+    "organizationUuid": "sentinel-org-uuid-0002",
+    "organizationName": "Sentinel Org Name 0003",
+    "displayName": "Sentinel Display 0007"
+  },
+  "projects": {}
+}

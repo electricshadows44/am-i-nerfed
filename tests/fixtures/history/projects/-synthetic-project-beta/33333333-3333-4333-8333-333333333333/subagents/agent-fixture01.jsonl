@@ -1,0 +1,2 @@
+{"type":"user","timestamp":"2026-10-23T08:01:00.000Z","sessionId":"33333333-3333-4333-8333-333333333333","isSidechain":true,"message":{"role":"user","content":"synthetic subagent task that mentions atis-latch in text only"}}
+{"type":"assistant","timestamp":"2026-10-23T08:01:30.000Z","sessionId":"33333333-3333-4333-8333-333333333333","isSidechain":true,"message":{"role":"assistant","content":[{"type":"text","text":"synthetic subagent reply"}]}}
