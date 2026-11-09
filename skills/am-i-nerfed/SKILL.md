@@ -17,6 +17,16 @@ directories above this skill's base directory: `<base directory>/../../am-i-nerf
 bash "<base directory>/../../am-i-nerfed.sh" check
 ```
 
+On native Windows, run the PowerShell port instead (no jq needed; same commands, output
+and exit codes):
+
+```bash
+pwsh -NoProfile -File "<base directory>/../../am-i-nerfed.ps1" check
+```
+
+If `pwsh` is missing, tell the user to install PowerShell 7 (`winget install
+Microsoft.PowerShell`) and stop. Use the same substitution for every command below.
+
 It is read-only, local-only and fast. The exit status is the verdict, not a failure:
 0 clean, 1 enrolled, 3 inconclusive, 2 error (if it says jq is missing, tell the user how
 to install jq and stop). Never add `--full`: whole tokens may identify the account.

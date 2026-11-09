@@ -4,6 +4,24 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- `am-i-nerfed.ps1`, a native Windows port in PowerShell 7.2+ with the same commands,
+  output and exit codes, and no jq. It reads `%USERPROFILE%\.claude.json` and
+  `%USERPROFILE%\.claude\`, honoring `CLAUDE_CONFIG_DIR`. Differences from the bash
+  script:
+  - `optout --apply-env=user` sets the variable as a Windows user environment variable,
+    replacing `--apply-env=profile`;
+  - `statusline` prints one snippet, which runs the script with `pwsh`;
+  - `optout` rewrites the config with System.Text.Json, keeping number literals and
+    Claude Code's own formatting, so no byte changes other than the removed keys.
+  Windows PowerShell 5.1 gets a clear message and exit 2.
+- `tests/run.ps1`, which runs the same fixtures as `tests/run.sh` against the port.
+- README: Windows install and a jq-free PowerShell one-liner. SKILL.md runs the port on
+  Windows.
+
 ## [0.1.2] - 2026-11-08
 
 ### Added
