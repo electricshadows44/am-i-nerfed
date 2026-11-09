@@ -17,6 +17,12 @@ jq -r '(.clientDataCacheSlots // {}) | to_entries[] | "\(.value.model // "-") | 
 One line per cached slot: `model | entrypoint | slot time (UTC) | experiment ID | experiment key`.
 `none` on every line means not enrolled as of the newest slot time. Empty output means no cached slot — inconclusive.
 
+On Windows, without jq, in PowerShell 7:
+
+```powershell
+(Get-Content "$env:USERPROFILE\.claude.json" -Raw | ConvertFrom-Json -AsHashtable).clientDataCacheSlots.Values | ForEach-Object { '{0} | {1} | {2:u} | {3} | {4}' -f $_.model, $_.entrypoint, [DateTimeOffset]::FromUnixTimeMilliseconds($_.at).UtcDateTime, $(if ($_.data.atis) { $_.data.atis.Substring(0, 3) } else { 'none' }), $(if ($_.data.experimentKey) { $_.data.experimentKey } else { '-' }) }
+```
+
 ## Install
 
 ```sh
@@ -27,7 +33,19 @@ cd am-i-nerfed
 
 Or as a Claude Code plugin: install this repo, then run `/am-i-nerfed` inside any session. The command list shows it as `/am-i-nerfed:am-i-nerfed`; both forms work (verified on Claude Code 2.1.319).
 
-Requires bash 3.2+ and `jq` (`brew install jq` / `apt install jq`; jq 1.7+ needed for `optout`). macOS, Linux, WSL. Not native Windows.
+Requires bash 3.2+ and `jq` (`brew install jq` / `apt install jq`; jq 1.7+ needed for `optout`). macOS, Linux, WSL.
+
+### Windows
+
+`am-i-nerfed.ps1` is a native PowerShell port: same commands, same output, same exit codes, no jq. It needs PowerShell 7.2+ (`winget install Microsoft.PowerShell`); Windows PowerShell 5.1 is refused with a message.
+
+```powershell
+git clone https://github.com/electricshadows44/am-i-nerfed.git
+cd am-i-nerfed
+pwsh -File .\am-i-nerfed.ps1 check
+```
+
+It reads `%USERPROFILE%\.claude.json` and `%USERPROFILE%\.claude\` (or `CLAUDE_CONFIG_DIR`), like Claude Code on Windows. Differences from the bash script: `optout --apply-env=user` sets the variable as a Windows user environment variable (seen by the Desktop app and every new terminal) instead of `--apply-env=profile`, and `statusline` prints one snippet that runs the script with `pwsh`. The plugin skill uses it automatically on Windows.
 
 ## Commands
 
@@ -36,7 +54,7 @@ Requires bash 3.2+ and `jq` (`brew install jq` / `apt install jq`; jq 1.7+ neede
 | `check` | Lists cached slots, gives a verdict per model. Default. `--json`, `--model ID`. | No |
 | `history` | Tallies experiment IDs recorded in your session transcripts by date. Transcripts are kept about 30 days. | No |
 | `optout` | Backs up `~/.claude.json`, removes the assignment keys, prints the env var that blocks re-enrollment. `--dry-run` shows the plan. | Yes (backup first) |
-| `optout --apply-env` | Also sets the env var in `~/.claude/settings.json`, after showing the edit. `--apply-env=profile` appends to your shell profile instead. | Yes |
+| `optout --apply-env` | Also sets the env var in `~/.claude/settings.json`, after showing the edit. `--apply-env=profile` appends to your shell profile instead (Windows: `--apply-env=user` sets a user environment variable). | Yes |
 | `restore` | Reverts the newest backup (whole file, not only the assignment). | Yes |
 | `statusline` | Prints a `/statusline` snippet showing `exp:<id>`, `exp:none` or `exp:?`. | No |
 
@@ -75,7 +93,7 @@ Alternative, not shipped here: a local proxy that strips the `x-cc-atis` header,
 
 ## Privacy
 
-Reads `~/.claude.json` (or `$CLAUDE_CONFIG_DIR`), `~/.claude/projects/`, `~/.claude/settings.json`, and its own backup folder. Touches your shell profile only with `--apply-env=profile`. Makes no network calls. Never prints your login token; whole experiment tokens appear only with `--full`.
+Reads `~/.claude.json` (or `$CLAUDE_CONFIG_DIR`), `~/.claude/projects/`, `~/.claude/settings.json`, and its own backup folder. Touches your shell profile only with `--apply-env=profile`, and your Windows user environment variables only with `--apply-env=user`. Makes no network calls. Never prints your login token; whole experiment tokens appear only with `--full`.
 
 ## Compatibility
 

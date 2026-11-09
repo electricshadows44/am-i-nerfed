@@ -186,6 +186,37 @@ During the build, its periodic cleanup removed the two transcripts last modified
   2^53 with jq older than 1.7, is written but did not run.
 - The proxy alternative in the README. It is documented only.
 
+## Windows port (`am-i-nerfed.ps1`)
+
+Verified on 2026-11-09 by reading files only, on one machine:
+
+| | |
+|---|---|
+| OS | Windows 11 Pro 10.0.26300 |
+| PowerShell | 7.6.9 (`pwsh`); Windows PowerShell 5.1 present, and refused as intended |
+| Claude Code | `claude --version` → `2.1.319 (Claude Code)`, native Windows install |
+
+- The config file is `%USERPROFILE%\.claude.json`; transcripts are under
+  `%USERPROFILE%\.claude\projects`. The slot layout matches the macOS notes above;
+  entrypoints seen were `cli` and `sdk-cli`.
+- The project list in `.claude.json` held keys that differ only in case (the same path
+  with an upper- and a lower-case drive letter). `ConvertFrom-Json` refuses such a file
+  unless given `-AsHashtable`, which is why the README one-liner uses it and the script
+  parses with System.Text.Json, which is case-sensitive.
+- `optout` on a copy of the real config with a synthetic assignment injected: the result
+  was byte-identical to the original file. The serializer reproduces Claude Code's
+  formatting (2-space indent, LF, no final newline).
+- `history` found `atis-latch` entries in 790 of about 8,500 transcripts (28 GB in all),
+  some with a non-empty value, so the field is written on Windows too. A full scan took
+  about 100 s on that corpus; the bash script scans the same files.
+- `tests/run.ps1` passes under PowerShell 7.6.9. The symlink case needs Developer Mode or
+  an elevated shell, and is skipped otherwise.
+
+Not verified: PowerShell 7.2 to 7.5 (the script uses only .NET 6 APIs), the
+`--apply-env=user` write itself (the test machine already had the variable set, and the
+suite never writes the real user environment), and Claude Desktop on Windows reading
+the user variable.
+
 ## If a Claude Code release breaks this
 
 Signs: `check` reports "No experiment-cache slots", `history` reports no `atis-latch`
